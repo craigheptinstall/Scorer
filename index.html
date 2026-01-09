@@ -18,40 +18,39 @@
       justify-content: center;
       align-items: flex-start;
       margin-top: 40px;
-      /* Make container full width on mobile */
       width: 100vw;
       box-sizing: border-box;
+      padding: 0 20px;
     }
     .main-content {
       display: flex;
       flex-direction: column;
       align-items: center;
       flex: 1;
-      max-width: 600px;
+      max-width: 800px;
     }
     h1 {
       margin-bottom: 20px;
-      font-size: 2rem;
+      font-size: 2.5rem;
     }
     #score {
-      font-size: 48px;
+      font-size: 64px;
       font-weight: bold;
       margin: 30px 0;
     }
     #buttons {
       display: flex;
       flex-wrap: wrap;
-      max-width: 420px;
-      gap: 10px;
+      max-width: 600px;
+      gap: 12px;
       justify-content: center;
       margin-bottom: 30px;
-      /* Add padding for mobile */
       padding: 0 4vw;
     }
     .dart-btn {
-      width: 60px;
-      height: 60px;
-      font-size: 20px;
+      width: 80px;
+      height: 80px;
+      font-size: 24px;
       border-radius: 12px;
       border: 1px solid #bbb;
       background: #fff;
@@ -60,16 +59,16 @@
       margin: 2px;
       touch-action: manipulation;
       /* Increase touch target for mobile */
-      min-width: 60px;
-      min-height: 60px;
+      min-width: 80px;
+      min-height: 80px;
       box-sizing: border-box;
     }
     .dart-btn:hover, .dart-btn:active {
       background: #e0e0e0;
     }
     #reset {
-      padding: 14px 36px;
-      font-size: 20px;
+      padding: 16px 40px;
+      font-size: 22px;
       border-radius: 10px;
       border: none;
       background: #d32f2f;
@@ -78,16 +77,39 @@
       transition: background 0.2s;
       margin-bottom: 20px;
       touch-action: manipulation;
-      min-width: 120px;
-      min-height: 48px;
+      min-width: 140px;
+      min-height: 52px;
       box-sizing: border-box;
+      margin-right: 10px;
     }
     #reset:hover, #reset:active {
       background: #b71c1c;
     }
+    #undo {
+      padding: 16px 40px;
+      font-size: 22px;
+      border-radius: 10px;
+      border: none;
+      background: #f57c00;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-bottom: 20px;
+      touch-action: manipulation;
+      min-width: 140px;
+      min-height: 52px;
+      box-sizing: border-box;
+    }
+    #undo:hover, #undo:active {
+      background: #e65100;
+    }
+    #undo:disabled {
+      background: #bbb;
+      cursor: not-allowed;
+    }
     .multiplier-btn {
-      padding: 12px 24px;
-      font-size: 20px;
+      padding: 14px 28px;
+      font-size: 22px;
       border-radius: 10px;
       border: 1px solid #bbb;
       background: #fff;
@@ -96,8 +118,8 @@
       transition: background 0.2s, border 0.2s;
       margin-bottom: 10px;
       touch-action: manipulation;
-      min-width: 60px;
-      min-height: 44px;
+      min-width: 80px;
+      min-height: 50px;
       box-sizing: border-box;
     }
     .multiplier-btn.selected {
@@ -106,12 +128,12 @@
       border: 2px solid #1976d2;
     }
     #history-container, #finish-container {
-      width: 220px;
+      width: 280px;
       min-height: 100px;
       background: #fff;
       border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-      padding: 20px 10px 20px 20px;
+      padding: 24px 12px 24px 24px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -119,21 +141,21 @@
     }
     #history-container {
       margin-right: 0;
-      margin-left: 0;
+      margin-left: 40px;
       min-height: 100px;
-      width: 100%;
-      max-width: 500px;
+      width: 280px;
+      max-width: 280px;
     }
     #finish-container {
       margin-left: 40px;
     }
     #history-title, #finish-title {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: bold;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
     .turn {
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
     .turn-number {
       font-weight: bold;
@@ -142,19 +164,77 @@
     .dart-entry {
       display: inline-block;
       margin-right: 6px;
-      padding: 2px 8px;
+      padding: 3px 10px;
       border-radius: 6px;
       background: #e3eafc;
-      font-size: 16px;
+      font-size: 18px;
     }
     .finish-suggestion {
-      font-size: 18px;
-      margin-bottom: 8px;
+      font-size: 20px;
+      margin-bottom: 10px;
       color: #388e3c;
     }
     .no-finish {
-      font-size: 16px;
+      font-size: 18px;
       color: #b71c1c;
+    }
+
+    /* Responsive styles for extra large screens */
+    @media (min-width: 1400px) {
+      .main-content {
+        max-width: 1000px;
+      }
+      h1 {
+        font-size: 3rem;
+      }
+      #score {
+        font-size: 80px;
+        margin: 40px 0;
+      }
+      #buttons {
+        max-width: 800px;
+        gap: 16px;
+      }
+      .dart-btn {
+        width: 100px;
+        height: 100px;
+        font-size: 28px;
+        min-width: 100px;
+        min-height: 100px;
+      }
+      .multiplier-btn {
+        font-size: 26px;
+        padding: 16px 32px;
+        min-width: 100px;
+        min-height: 56px;
+      }
+      #reset, #undo {
+        font-size: 26px;
+        padding: 18px 48px;
+        min-width: 160px;
+        min-height: 60px;
+      }
+      #history-container, #finish-container {
+        width: 340px;
+        padding: 28px 16px 28px 28px;
+      }
+      #history-container {
+        width: 340px;
+        max-width: 340px;
+      }
+      #history-title, #finish-title {
+        font-size: 26px;
+      }
+      .dart-entry {
+        font-size: 20px;
+        padding: 4px 12px;
+      }
+      .finish-suggestion {
+        font-size: 24px;
+      }
+      .no-finish {
+        font-size: 20px;
+      }
     }
 
     /* Responsive styles for tablets and phones */
@@ -176,6 +256,8 @@
         margin-right: 0;
         margin-left: 0;
         min-height: 0;
+        max-width: 98vw;
+        width: 98vw;
       }
       #finish-container {
         margin-left: 0;
@@ -207,6 +289,13 @@
         min-height: 40px;
       }
       #reset {
+        font-size: 1.1rem;
+        padding: 10px 20px;
+        min-width: 100px;
+        min-height: 44px;
+        margin-right: 8px;
+      }
+      #undo {
         font-size: 1.1rem;
         padding: 10px 20px;
         min-width: 100px;
@@ -258,6 +347,13 @@
         padding: 8px 10px;
         min-width: 80px;
         min-height: 36px;
+        margin-right: 6px;
+      }
+      #undo {
+        font-size: 1rem;
+        padding: 8px 10px;
+        min-width: 80px;
+        min-height: 36px;
       }
     }
     @media (max-width: 400px) {
@@ -271,7 +367,7 @@
         font-size: 0.85rem;
         height: 36px;
       }
-      .multiplier-btn, #reset {
+      .multiplier-btn, #reset, #undo {
         font-size: 0.9rem;
         min-width: 36px;
         min-height: 30px;
@@ -282,7 +378,6 @@
 <body>
   <div class="container">
     <div class="main-content">
-      <h1>Darts Scorer</h1>
       <div id="score">501</div>
       <div id="multipliers" style="margin-bottom:20px;">
         <button id="single" class="multiplier-btn selected">Single</button>
@@ -290,15 +385,20 @@
         <button id="triple" class="multiplier-btn">Triple</button>
       </div>
       <div id="buttons"></div>
-      <button id="reset">Reset</button>
+      <div style="display: flex; gap: 0;">
+        <button id="reset">Reset</button>
+        <button id="undo" disabled>Undo</button>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column;">
+      <div id="finish-container">
+        <div id="finish-title">Suggested Finish</div>
+        <div id="finish"></div>
+      </div>
       <div id="history-container">
         <div id="history-title">History</div>
         <div id="history"></div>
       </div>
-    </div>
-    <div id="finish-container">
-      <div id="finish-title">Suggested Finish</div>
-      <div id="finish"></div>
     </div>
   </div>
   <script>
@@ -307,9 +407,14 @@
     const buttonsDiv = document.getElementById('buttons');
     const historyDiv = document.getElementById('history');
     const finishDiv = document.getElementById('finish');
+    const undoBtn = document.getElementById('undo');
     let score = 501;
     let multiplier = 1;
     let darts = []; // Each entry: {label, value, multiplier, display}
+
+    function updateUndoButton() {
+      undoBtn.disabled = darts.length === 0;
+    }
 
     function getScoreValue(val) {
       if (val === 'Bull') return 50 * multiplier;
@@ -338,6 +443,7 @@
         });
         renderHistory();
         renderFinish(score);
+        updateUndoButton();
       } else {
         // Still update finish suggestion if score didn't change
         renderFinish(score);
@@ -371,6 +477,18 @@
       darts = [];
       renderHistory();
       renderFinish(score);
+      updateUndoButton();
+    };
+
+    undoBtn.onclick = () => {
+      if (darts.length > 0) {
+        const lastDart = darts.pop();
+        score += lastDart.value;
+        scoreDiv.textContent = score;
+        renderHistory();
+        renderFinish(score);
+        updateUndoButton();
+      }
     };
 
     function renderHistory() {
@@ -616,6 +734,8 @@
 
     // Initial render
     renderFinish(score);
+    updateUndoButton();
   </script>
 </body>
 </html>
+
