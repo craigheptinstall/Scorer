@@ -572,11 +572,14 @@
         tabsContainer.appendChild(tab);
       });
 
-      const addBtn = document.createElement('button');
-      addBtn.className = 'add-player-btn';
-      addBtn.textContent = '+ Add';
-      addBtn.onclick = addPlayer;
-      tabsContainer.appendChild(addBtn);
+      // Only show add button if less than 2 players
+      if (players.length < 2) {
+        const addBtn = document.createElement('button');
+        addBtn.className = 'add-player-btn';
+        addBtn.textContent = '+ Add';
+        addBtn.onclick = addPlayer;
+        tabsContainer.appendChild(addBtn);
+      }
     }
 
     function addPlayer() {
