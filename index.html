@@ -3,11 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Darts Scorer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <style>
     body {
       font-family: sans-serif;
       margin: 0;
       background: #f7f7f7;
+      /* Prevent horizontal scroll on mobile */
+      overflow-x: hidden;
     }
     .container {
       display: flex;
@@ -15,12 +18,16 @@
       justify-content: center;
       align-items: flex-start;
       margin-top: 40px;
+      /* Make container full width on mobile */
+      width: 100vw;
+      box-sizing: border-box;
     }
     .main-content {
       display: flex;
       flex-direction: column;
       align-items: center;
       flex: 1;
+      max-width: 600px;
     }
     h1 {
       margin-bottom: 20px;
@@ -38,26 +45,32 @@
       gap: 10px;
       justify-content: center;
       margin-bottom: 30px;
+      /* Add padding for mobile */
+      padding: 0 4vw;
     }
     .dart-btn {
       width: 60px;
       height: 60px;
       font-size: 20px;
-      border-radius: 8px;
+      border-radius: 12px;
       border: 1px solid #bbb;
       background: #fff;
       cursor: pointer;
       transition: background 0.2s;
       margin: 2px;
       touch-action: manipulation;
+      /* Increase touch target for mobile */
+      min-width: 60px;
+      min-height: 60px;
+      box-sizing: border-box;
     }
     .dart-btn:hover, .dart-btn:active {
       background: #e0e0e0;
     }
     #reset {
-      padding: 10px 30px;
-      font-size: 18px;
-      border-radius: 8px;
+      padding: 14px 36px;
+      font-size: 20px;
+      border-radius: 10px;
       border: none;
       background: #d32f2f;
       color: #fff;
@@ -65,14 +78,17 @@
       transition: background 0.2s;
       margin-bottom: 20px;
       touch-action: manipulation;
+      min-width: 120px;
+      min-height: 48px;
+      box-sizing: border-box;
     }
     #reset:hover, #reset:active {
       background: #b71c1c;
     }
     .multiplier-btn {
-      padding: 10px 20px;
-      font-size: 18px;
-      border-radius: 8px;
+      padding: 12px 24px;
+      font-size: 20px;
+      border-radius: 10px;
       border: 1px solid #bbb;
       background: #fff;
       cursor: pointer;
@@ -80,6 +96,9 @@
       transition: background 0.2s, border 0.2s;
       margin-bottom: 10px;
       touch-action: manipulation;
+      min-width: 60px;
+      min-height: 44px;
+      box-sizing: border-box;
     }
     .multiplier-btn.selected {
       background: #1976d2;
@@ -99,8 +118,11 @@
       margin-bottom: 20px;
     }
     #history-container {
-      margin-right: 40px;
-      min-height: 300px;
+      margin-right: 0;
+      margin-left: 0;
+      min-height: 100px;
+      width: 100%;
+      max-width: 500px;
     }
     #finish-container {
       margin-left: 40px;
@@ -135,21 +157,24 @@
       color: #b71c1c;
     }
 
-    /* Responsive styles for phones */
+    /* Responsive styles for tablets and phones */
     @media (max-width: 900px) {
       .container {
         flex-direction: column;
         align-items: stretch;
         margin-top: 10px;
+        width: 100vw;
       }
       #history-container, #finish-container {
-        width: 95vw;
+        width: 98vw;
         min-width: 0;
         margin: 0 auto 16px auto;
         padding: 12px 6px 12px 12px;
+        box-sizing: border-box;
       }
       #history-container {
         margin-right: 0;
+        margin-left: 0;
         min-height: 0;
       }
       #finish-container {
@@ -157,27 +182,35 @@
       }
       .main-content {
         margin: 0 0 16px 0;
+        width: 100vw;
+        box-sizing: border-box;
       }
       #buttons {
         max-width: 100vw;
-        gap: 6px;
+        gap: 8px;
+        padding: 0 2vw;
       }
       .dart-btn {
-        width: 18vw;
+        width: 20vw;
         min-width: 54px;
-        max-width: 80px;
-        height: 48px;
-        font-size: 1.1rem;
+        max-width: 90px;
+        height: 54px;
+        font-size: 1.2rem;
         margin: 1vw 1vw 1vw 0;
+        border-radius: 14px;
       }
       .multiplier-btn {
-        font-size: 1rem;
-        padding: 8px 12px;
+        font-size: 1.1rem;
+        padding: 10px 16px;
         margin-right: 6px;
+        min-width: 48px;
+        min-height: 40px;
       }
       #reset {
-        font-size: 1rem;
-        padding: 8px 16px;
+        font-size: 1.1rem;
+        padding: 10px 20px;
+        min-width: 100px;
+        min-height: 44px;
       }
       #score {
         font-size: 2.2rem;
@@ -187,17 +220,19 @@
         font-size: 1.4rem;
       }
     }
-    @media (max-width: 500px) {
+    @media (max-width: 600px) {
       #buttons {
         gap: 4px;
+        padding: 0 1vw;
       }
       .dart-btn {
-        width: 22vw;
+        width: 24vw;
         min-width: 40px;
-        max-width: 60px;
-        height: 38px;
-        font-size: 0.95rem;
+        max-width: 70px;
+        height: 44px;
+        font-size: 1rem;
         margin: 1vw 1vw 1vw 0;
+        border-radius: 12px;
       }
       #history-container, #finish-container {
         padding: 8px 2px 8px 8px;
@@ -212,15 +247,40 @@
       #score {
         font-size: 1.5rem;
       }
+      .multiplier-btn {
+        font-size: 1rem;
+        padding: 8px 10px;
+        min-width: 40px;
+        min-height: 36px;
+      }
+      #reset {
+        font-size: 1rem;
+        padding: 8px 10px;
+        min-width: 80px;
+        min-height: 36px;
+      }
+    }
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 1.1rem;
+      }
+      #score {
+        font-size: 1.1rem;
+      }
+      .dart-btn {
+        font-size: 0.85rem;
+        height: 36px;
+      }
+      .multiplier-btn, #reset {
+        font-size: 0.9rem;
+        min-width: 36px;
+        min-height: 30px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div id="history-container">
-      <div id="history-title">History</div>
-      <div id="history"></div>
-    </div>
     <div class="main-content">
       <h1>Darts Scorer</h1>
       <div id="score">501</div>
@@ -231,6 +291,10 @@
       </div>
       <div id="buttons"></div>
       <button id="reset">Reset</button>
+      <div id="history-container">
+        <div id="history-title">History</div>
+        <div id="history"></div>
+      </div>
     </div>
     <div id="finish-container">
       <div id="finish-title">Suggested Finish</div>
