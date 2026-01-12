@@ -8,7 +8,7 @@ const tabsContainer = document.getElementById('tabs-container');
 
 // Player state management
 let players = [
-  { id: 1, name: 'Player 1', score: 501, darts: [], multiplier: 1 }
+  { id: 1, name: 'Player 1', score: 501, darts: [], multiplier: 1, totalDarts: 0, totalScore: 0 }
 ];
 let currentPlayerId = 1;
 let nextPlayerId = 2;
@@ -61,7 +61,9 @@ function addPlayer() {
     name: `Player ${nextPlayerId}`,
     score: 501,
     darts: [],
-    multiplier: 1
+    multiplier: 1,
+    totalDarts: 0,
+    totalScore: 0
   });
   nextPlayerId++;
   renderTabs();
@@ -135,6 +137,8 @@ function updateScore(val) {
       multiplier: multiplier,
       display: getDartDisplay(val, multiplier)
     });
+    player.totalDarts++;
+    player.totalScore += value;
     score = player.score;
     darts = player.darts;
     scoreDiv.textContent = score;
@@ -184,6 +188,8 @@ undoBtn.onclick = () => {
   if (player.darts.length > 0) {
     const lastDart = player.darts.pop();
     player.score += lastDart.value;
+    player.totalDarts--;
+    player.totalScore -= lastDart.value;
     score = player.score;
     darts = player.darts;
     scoreDiv.textContent = score;
@@ -195,6 +201,25 @@ undoBtn.onclick = () => {
 
 function renderHistory() {
   historyDiv.innerHTML = '';
+
+  // Calculate and display 3-dart average using cumulative stats
+  const player = getCurrentPlayer();
+  if (player.totalDarts > 0) {
+    const threeDartAverage = (player.totalScore / player.totalDarts * 3).toFixed(2);
+
+    const avgDiv = document.createElement('div');
+    avgDiv.style.marginBottom = '16px';
+    avgDiv.style.padding = '10px 14px';
+    avgDiv.style.background = 'linear-gradient(145deg, #74b9ff, #0984e3)';
+    avgDiv.style.borderRadius = '10px';
+    avgDiv.style.fontWeight = 'bold';
+    avgDiv.style.fontSize = '18px';
+    avgDiv.style.color = '#fff';
+    avgDiv.style.boxShadow = '0 3px 8px rgba(0,0,0,0.15)';
+    avgDiv.textContent = `3-Dart Average: ${threeDartAverage}`;
+    historyDiv.appendChild(avgDiv);
+  }
+
   if (darts.length === 0) return;
   for (let i = 0; i < darts.length; i += 3) {
     const turn = darts.slice(i, i + 3);

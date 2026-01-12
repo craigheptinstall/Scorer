@@ -1,8 +1,9 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
-  background: #f7f7f7;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
 .container {
@@ -27,123 +28,163 @@ body {
 h1 {
   margin-bottom: 20px;
   font-size: 2.5rem;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 #score {
-  font-size: 64px;
+  font-size: 96px;
   font-weight: bold;
-  margin: 30px 0;
+  margin: 40px 0;
+  padding: 20px 40px;
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2), inset 0 2px 4px rgba(255,255,255,0.9);
+  min-width: 280px;
+  text-align: center;
+  color: #667eea;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
 #buttons {
   display: flex;
   flex-wrap: wrap;
   max-width: 600px;
-  gap: 12px;
+  gap: 8px;
   justify-content: center;
   margin-bottom: 30px;
   padding: 0 4vw;
 }
 
 .dart-btn {
-  width: 80px;
-  height: 80px;
-  font-size: 24px;
+  width: 90px;
+  height: 90px;
+  font-size: 26px;
   border-radius: 12px;
-  border: 1px solid #bbb;
-  background: #fff;
+  border: none;
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s;
   margin: 2px;
   touch-action: manipulation;
-  min-width: 80px;
-  min-height: 80px;
+  min-width: 90px;
+  min-height: 90px;
   box-sizing: border-box;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  font-weight: 600;
+  color: #333;
 }
 
 .dart-btn:hover, .dart-btn:active {
-  background: #e0e0e0;
+  background: linear-gradient(145deg, #667eea, #764ba2);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
 }
 
 #reset {
   padding: 16px 40px;
   font-size: 22px;
-  border-radius: 10px;
+  border-radius: 12px;
   border: none;
-  background: #d32f2f;
+  background: linear-gradient(145deg, #f093fb, #f5576c);
   color: #fff;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s;
   margin-bottom: 20px;
   touch-action: manipulation;
   min-width: 140px;
   min-height: 52px;
   box-sizing: border-box;
   margin-right: 10px;
+  box-shadow: 0 4px 12px rgba(245,87,108,0.4);
+  font-weight: 600;
 }
 
 #reset:hover, #reset:active {
-  background: #b71c1c;
+  background: linear-gradient(145deg, #f5576c, #d32f2f);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(245,87,108,0.5);
 }
 
 #undo {
   padding: 16px 40px;
   font-size: 22px;
-  border-radius: 10px;
+  border-radius: 12px;
   border: none;
-  background: #f57c00;
-  color: #fff;
+  background: linear-gradient(145deg, #ffeaa7, #fdcb6e);
+  color: #333;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s;
   margin-bottom: 20px;
   touch-action: manipulation;
   min-width: 140px;
   min-height: 52px;
   box-sizing: border-box;
+  box-shadow: 0 4px 12px rgba(253,203,110,0.4);
+  font-weight: 600;
 }
 
 #undo:hover, #undo:active {
-  background: #e65100;
+  background: linear-gradient(145deg, #fdcb6e, #f39c12);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(253,203,110,0.5);
 }
 
 #undo:disabled {
-  background: #bbb;
+  background: linear-gradient(145deg, #dfe6e9, #b2bec3);
   cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
 }
 
 .multiplier-btn {
-  padding: 14px 28px;
-  font-size: 22px;
-  border-radius: 10px;
-  border: 1px solid #bbb;
-  background: #fff;
+  padding: 20px 36px;
+  font-size: 26px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
   cursor: pointer;
-  margin-right: 10px;
-  transition: background 0.2s, border 0.2s;
+  margin-right: 12px;
+  transition: all 0.2s;
   margin-bottom: 10px;
   touch-action: manipulation;
-  min-width: 80px;
-  min-height: 50px;
+  min-width: 100px;
+  min-height: 64px;
   box-sizing: border-box;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  color: #333;
 }
 
 .multiplier-btn.selected {
-  background: #1976d2;
+  background: linear-gradient(145deg, #667eea, #764ba2);
   color: #fff;
-  border: 2px solid #1976d2;
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(102,126,234,0.4);
+}
+
+.multiplier-btn:hover:not(.selected) {
+  background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+  transform: translateY(-2px);
+}
+
+.multiplier-btn:active {
+  transform: scale(0.98);
 }
 
 #history-container, #finish-container {
   width: 280px;
   min-height: 100px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
   padding: 24px 12px 24px 24px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-bottom: 20px;
+  border: 2px solid rgba(255,255,255,0.5);
 }
 
 #history-container {
@@ -162,6 +203,8 @@ h1 {
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 12px;
+  color: #667eea;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
 .turn {
@@ -171,26 +214,41 @@ h1 {
 .turn-number {
   font-weight: bold;
   margin-right: 8px;
+  color: #764ba2;
 }
 
 .dart-entry {
   display: inline-block;
   margin-right: 6px;
   padding: 3px 10px;
-  border-radius: 6px;
-  background: #e3eafc;
+  border-radius: 8px;
+  background: linear-gradient(145deg, #a8e6cf, #74d2bb);
   font-size: 18px;
+  font-weight: 600;
+  color: #2d3436;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .finish-suggestion {
   font-size: 20px;
   margin-bottom: 10px;
-  color: #388e3c;
+  color: #00b894;
+  font-weight: 600;
+  padding: 8px 12px;
+  background: linear-gradient(145deg, #dfe6e9, #f8f9fa);
+  border-radius: 8px;
+  border-left: 4px solid #00b894;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .no-finish {
   font-size: 18px;
-  color: #b71c1c;
+  color: #d63031;
+  font-weight: 600;
+  padding: 8px 12px;
+  background: linear-gradient(145deg, #fab1a0, #ffe0dd);
+  border-radius: 8px;
+  border-left: 4px solid #d63031;
 }
 
 /* Player tabs styling */
@@ -212,10 +270,9 @@ h1 {
 .player-tab {
   padding: 8px 12px;
   font-size: 14px;
-  border-radius: 6px 6px 0 0;
-  border: 2px solid #bbb;
-  border-bottom: none;
-  background: #fff;
+  border-radius: 8px 8px 0 0;
+  border: none;
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
   cursor: pointer;
   transition: all 0.2s;
   touch-action: manipulation;
@@ -223,47 +280,56 @@ h1 {
   min-width: 60px;
   white-space: nowrap;
   flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  font-weight: 600;
+  color: #333;
 }
 
 .player-tab.active {
-  background: #1976d2;
+  background: linear-gradient(145deg, #667eea, #764ba2);
   color: #fff;
-  border-color: #1976d2;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102,126,234,0.4);
 }
 
 .player-tab:hover:not(.active) {
-  background: #e0e0e0;
+  background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+  transform: translateY(-1px);
 }
 
 .remove-player {
   margin-left: 6px;
   font-weight: bold;
-  color: #d32f2f;
+  color: #d63031;
   cursor: pointer;
   font-size: 16px;
 }
 
 .player-tab.active .remove-player {
-  color: #fff;
+  color: #fab1a0;
 }
 
 .add-player-btn {
   padding: 8px 12px;
   font-size: 14px;
-  border-radius: 6px;
-  border: 2px solid #388e3c;
-  background: #4caf50;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(145deg, #55efc4, #00b894);
   color: #fff;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s;
   touch-action: manipulation;
   min-width: 60px;
   flex-shrink: 0;
   white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,184,148,0.4);
+  font-weight: 600;
 }
 
 .add-player-btn:hover, .add-player-btn:active {
-  background: #388e3c;
+  background: linear-gradient(145deg, #00b894, #00a085);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,184,148,0.5);
 }
 
 /* Responsive styles for extra large screens */
@@ -275,25 +341,28 @@ h1 {
     font-size: 3rem;
   }
   #score {
-    font-size: 80px;
-    margin: 40px 0;
+    font-size: 120px;
+    margin: 50px 0;
+    padding: 30px 60px;
+    min-width: 360px;
   }
   #buttons {
     max-width: 800px;
-    gap: 16px;
+    gap: 12px;
   }
   .dart-btn {
-    width: 100px;
-    height: 100px;
-    font-size: 28px;
-    min-width: 100px;
-    min-height: 100px;
+    width: 110px;
+    height: 110px;
+    font-size: 30px;
+    min-width: 110px;
+    min-height: 110px;
   }
   .multiplier-btn {
-    font-size: 26px;
-    padding: 16px 32px;
-    min-width: 100px;
-    min-height: 56px;
+    font-size: 30px;
+    padding: 24px 44px;
+    min-width: 120px;
+    min-height: 72px;
+    margin-right: 16px;
   }
   #reset, #undo {
     font-size: 26px;
@@ -372,24 +441,24 @@ h1 {
   }
   #buttons {
     max-width: 100vw;
-    gap: 8px;
+    gap: 6px;
     padding: 0 2vw;
   }
   .dart-btn {
-    width: 20vw;
-    min-width: 54px;
-    max-width: 90px;
-    height: 54px;
-    font-size: 1.2rem;
+    width: 21vw;
+    min-width: 60px;
+    max-width: 95px;
+    height: 60px;
+    font-size: 1.3rem;
     margin: 1vw 1vw 1vw 0;
     border-radius: 14px;
   }
   .multiplier-btn {
-    font-size: 1.1rem;
-    padding: 10px 16px;
-    margin-right: 6px;
-    min-width: 48px;
-    min-height: 40px;
+    font-size: 20px;
+    padding: 16px 24px;
+    margin-right: 8px;
+    min-width: 80px;
+    min-height: 56px;
   }
   #reset {
     font-size: 1.1rem;
@@ -405,8 +474,10 @@ h1 {
     min-height: 44px;
   }
   #score {
-    font-size: 2.2rem;
-    margin: 18px 0;
+    font-size: 72px;
+    margin: 24px 0;
+    padding: 16px 30px;
+    min-width: 200px;
   }
   h1 {
     font-size: 1.4rem;
@@ -435,15 +506,15 @@ h1 {
 
 @media (max-width: 600px) {
   #buttons {
-    gap: 4px;
+    gap: 3px;
     padding: 0 1vw;
   }
   .dart-btn {
-    width: 24vw;
-    min-width: 40px;
-    max-width: 70px;
-    height: 44px;
-    font-size: 1rem;
+    width: 26vw;
+    min-width: 48px;
+    max-width: 78px;
+    height: 48px;
+    font-size: 1.1rem;
     margin: 1vw 1vw 1vw 0;
     border-radius: 12px;
   }
@@ -457,14 +528,21 @@ h1 {
   .finish-suggestion {
     font-size: 15px;
   }
+  #history-container div[style*="3-Dart Average"] {
+    font-size: 15px !important;
+    padding: 8px 10px !important;
+  }
   #score {
-    font-size: 1.5rem;
+    font-size: 56px;
+    padding: 14px 24px;
+    margin: 20px 0;
+    min-width: 160px;
   }
   .multiplier-btn {
-    font-size: 1rem;
-    padding: 8px 10px;
-    min-width: 40px;
-    min-height: 36px;
+    font-size: 18px;
+    padding: 14px 20px;
+    min-width: 70px;
+    min-height: 52px;
   }
   #reset {
     font-size: 1rem;
@@ -500,16 +578,18 @@ h1 {
     font-size: 1.1rem;
   }
   #score {
-    font-size: 1.1rem;
+    font-size: 48px;
+    padding: 12px 20px;
+    min-width: 140px;
   }
   .dart-btn {
-    font-size: 0.85rem;
-    height: 36px;
+    font-size: 0.95rem;
+    height: 40px;
   }
   .multiplier-btn, #reset, #undo {
-    font-size: 0.9rem;
-    min-width: 36px;
-    min-height: 30px;
+    font-size: 16px;
+    min-width: 60px;
+    min-height: 48px;
   }
   .player-tab, .add-player-btn {
     font-size: 11px;
@@ -519,5 +599,8 @@ h1 {
   .remove-player {
     font-size: 12px;
   }
+  #history-container div[style*="3-Dart Average"] {
+    font-size: 14px !important;
+    padding: 6px 8px !important;
+  }
 }
-
